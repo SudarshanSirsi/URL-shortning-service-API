@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +19,6 @@ import com.sud.shorturl.model.Urldto;
 import com.sud.shorturl.services.UrlService;
 
 import io.micrometer.common.util.StringUtils;
-import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
@@ -76,7 +74,7 @@ public class UrlShortingController {
 			service.deleteShortUrl(urlToRet);
 			UrlErrorResponceDto errorResponceDto = new UrlErrorResponceDto();
 			errorResponceDto.setError("URL expired. Please try generating the fresh one");
-			errorResponceDto.setStatus("20W0");
+			errorResponceDto.setStatus("200");
 			return new ResponseEntity<UrlErrorResponceDto>(errorResponceDto, HttpStatus.OK);
 		}
 		
